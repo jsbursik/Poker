@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poker Range</title>
+  <link rel="stylesheet" href="main.css">
+  <script type="text/javascript" src="cookie.min.js"></script>
+</head>
+<body>
+
+<div class="header" id="head">
+  <img src="images/icon.svg" height="35px" style="background-color:#161616"/>
+  <div class="title">Poker Range Chart</div>
+</div>
+
+<div class="sidebar column">
+
+  <div class="menu-item" onclick="imp()">Import</div>
+
+  <input type="text" id="imp1" class="tbox" placeholder="Paste string here..." onfocus="this.select();"/>
+
+  <div class="menu-item" onclick="exp()">Export</div>
+
+  <input type="text" id="exp1" class="tbox" placeholder="String outputs here..." onfocus="this.select();"/>
+
+  <div class="menu-item" onclick="save()">Save</div>
+
+  <input type="text" id="sav" class="tbox" placeholder="Name of Hand..."/>
+
+  <div class="menu-item" onclick="load()">Load</div>
+
+  <select id="saves" placeholder="Saves...">
+    <option value="" disabled selected>Select Save...</option>
+  </select>
+
+  <div class="menu-item" onclick="clCook()">Delete all saves</div>
+
+  <div class="menu-item" onclick="selAll()">Select all</div>
+
+  <div class="menu-item" onclick="desAll()">Deselect all</div>
+
+</div>
+
+<div class="container column" id="container">
+  <script type="text/javascript">
+  var hands = ["AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s", "A4s", "A3s", "A2s", "AKo", "KK", "KQs", "KJs", "KTs", "K9s", "K8s", "K7s", "K6s", "K5s", "K4s", "K3s", "K2s", "AQo", "KQo", "QQ", "QJs", "QTs", "Q9s", "Q8s", "Q7s", "Q6s", "Q5s", "Q4s", "Q3s", "Q2s", "AJo", "KJo", "QJo", "JJ", "JTs", "J9s", "J8s", "J7s", "J6s", "J5s", "J4s", "J3s", "J2s", "ATo", "KTo", "QTo", "JTo", "TT", "T9s", "T8s", "T7s", "T6s", "T5s", "T4s", "T3s", "T2s", "A9o", "K9o", "Q9o", "J9o", "T9o", "99", "98s", "97s", "96s", "95s", "94s", "93s", "92s", "A8o", "K8o", "Q8o", "J8o", "T8o", "98o", "88", "87s", "86s", "85s", "84s", "83s", "82s", "A7o", "K7o", "Q7o", "J7o", "T7o", "97o", "87o", "77", "76s", "75s", "74s", "73s", "72s", "A6o", "K6o", "Q6o", "J6o", "T6o", "96o", "86o", "76o", "66", "65s", "64s", "63s", "62s", "A5o", "K5o", "Q5o", "J5o", "T5o", "95o", "85o", "75o", "65o", "55", "54s", "53s", "52s", "A4o", "K4o", "Q4o", "J4o", "T4o", "94o", "84o", "74o", "64o", "54o", "44", "43s", "42s", "A3o", "K3o", "Q3o", "J3o", "T3o", "93o", "83o", "73o", "63o", "53o", "43o", "33", "32s", "A2o", "K2o", "Q2o", "J2o", "T2o", "92o", "82o", "72o", "62o", "52o", "42o", "32o", "22"];
+  var i = 0;
+  for(var j=0;j<=12;j++){
+      document.write("<div class='row u'>")
+        for(var h=0;h<13;h++){
+          var str = hands[i].slice(-1);
+          if (str!="o" && str!="s") {
+            str = "g";
+          }
+          document.write('<div class="box '+ str +'" id="' + hands[i] + '" onclick="toggle(this.id)">' + hands[i] + '</div>');
+          i++;
+        }
+      document.write('</div>');
+    }
+  function toggle(id){
+      var box = document.getElementById(id), sli = id.slice(-1);
+      switch(box.classList.item(1)){
+        case "o":
+            box.classList.remove('o');
+            box.classList.add('oh');
+          break;
+        case "s":
+            box.classList.remove('s');
+            box.classList.add('sh');
+          break;
+        case "g":
+            box.classList.remove('g');
+            box.classList.add('gh');
+          break;
+        case "oh":
+            box.classList.remove('oh');
+            box.classList.add('o');
+          break;
+        case "sh":
+            box.classList.remove('sh');
+            box.classList.add('s');
+          break;
+        case "gh":
+            box.classList.remove('gh');
+            box.classList.add('g');
+          break;
+        default:
+          alert("Oops");
+      }
+    }
+  </script>
+  </div>
+  <script type="text/javascript" src="scripts.js" onload="selLoad()"></script>
+  <!--- 8882725517 --->
+</body>
+</html>
